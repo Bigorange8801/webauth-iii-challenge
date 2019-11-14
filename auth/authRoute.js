@@ -32,6 +32,7 @@ router.post('/login', (req, res) => {
                         const token = generateToken(user)
                         res.status(200).json({
                               message: `Hello ${user.username}.`,
+                              user,
                               // add the newly generated token to the servers response
                               token
                         });
@@ -45,9 +46,19 @@ router.post('/login', (req, res) => {
             })
 });
 
-// router.get('/logout', (req, res) => {
-     
-// })
+router.get('/logout', (req, res) => {
+	if (req.) {
+		req.session.destroy(err => {
+			if (err) {
+				res.status(500).json({ message: 'logout' });
+			} else {
+				res.status(200).json({ message: 'Have a nice day' });
+			}
+		});
+	} else {
+		res.status(200).json({ message: 'bye, thanks' });
+	}
+});
 
 
 
